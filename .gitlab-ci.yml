@@ -1,0 +1,23 @@
+image: gitlab-registry.cern.ch/cms-cloud/cmssw-docker/al9-cms 
+
+stages:
+  - test
+before_script:
+  - cat /etc/redhat-release
+  - gcc --version
+
+test:
+  stage: test
+  tags:
+    - cvmfs
+  script:
+    - source example/environment.sh
+    - python3 -m pip install --upgrade --upgrade-strategy eager --editable .
+    - cd example
+    - python3 -m pepper.runproc example_processor.py test_config.hjson
+  artifacts:
+    expire_in: 10 hours
+    paths:
+     - example/cutflows.json
+
+

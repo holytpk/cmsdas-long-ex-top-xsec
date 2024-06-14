@@ -1,0 +1,20 @@
+#Logs:
+runinfo
+nohup.out
+
+#pycache:
+__pycache__
+*.pyc
+
+#Output columns/histograms:
+*.hdf5
+hists
+*.coffea
+
+combine/output
+combine/evoutput
+
+*.buildconfig
+
+#pip:
+pepper.egg-info

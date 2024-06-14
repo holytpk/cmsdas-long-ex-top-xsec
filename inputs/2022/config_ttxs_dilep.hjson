@@ -1,0 +1,316 @@
+{
+    ##################################################
+    # input dirs
+    ##################################################
+
+    "datadir": "inputs/2022",
+    "store": "/eos/cms/store",
+
+    ##################################################
+    # systematics to compute
+    ##################################################
+
+    "compute_systematics": false,
+    "do_jet_variations": true,
+    "do_generator_uncertainties": true,
+    "skip_nonshape_systematics": true,
+
+    ##################################################
+    # basic info: lumi, pileup, etc
+    ##################################################
+
+    "year": "2022",
+    "luminosity": 1.21,
+    "lumimask": "$DATADIR/Cert_Collisions2022_356309_356615_Golden.json",
+    "crosssections": "$CONFDIR/../crosssections_13p6.hjson",
+    "mc_lumifactors": "$DATADIR/lumifactors.json",
+
+    #"pileup_reweighting_exp": [
+    #    "$DATADIR/your_file_name.root",
+    #    "your_histogram_name",
+    #    ["your_variable"]
+    #],
+
+    "rng_seed_file": "$CONFDIR/seed.txt",
+    "blinding_denom": 1,
+
+    ##################################################
+    # datasets
+    ##################################################
+
+    "exp_datasets": {
+        "MuonEG": [
+            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/MuonEG/*.root"
+        ],
+        "EGamma": [
+            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/EGamma/*.root"
+        ],
+        "DoubleMuon": [
+            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/DoubleMuon/*.root"
+        ],
+        "Muon": [
+            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/Muon/*.root"
+        ]
+    },
+    "data_eras": {
+        "2022C1": [1, 356386],
+        "2022C2": [356387, 1000000]
+    },
+    "mc_datasets": {
+        "TTTo2L2Nu_CP5_13p6TeV_powheg-pythia8": [
+            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/TTTo2L2Nu_CP5_13p6TeV_powheg-pythia8/*.root"
+        ],
+        "DYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8": [
+            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/DYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8/*.root",
+        ],
+        "DYJetsToLL_M-10to50_TuneCP5_13p6TeV-madgraphMLM-pythia8": [
+            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/DYJetsToLL_M-10to50_TuneCP5_13p6TeV-madgraphMLM-pythia8/*.root"
+        ],
+        "TTTo2L2Nu_Hdamp-150p7_CP5_13p6TeV_powheg-pythia8": [
+            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/TTTo2L2Nu_Hdamp-150p7_CP5_13p6TeV_powheg-pythia8/*.root"
+        ],
+        "TTTo2L2Nu_Hdamp-397p6_CP5_13p6TeV_powheg-pythia8": [
+            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/TTTo2L2Nu_Hdamp-397p6_CP5_13p6TeV_powheg-pythia8/*.root"
+        ],
+        "TbarWplus_DR_AtLeastOneLepton_CP5_13p6TeV_powheg-pythia8": [
+            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/TbarWplus_DR_AtLeastOneLepton_CP5_13p6TeV_powheg-pythia8/*.root"
+        ],
+        "TWminus_DR_AtLeastOneLepton_CP5_13p6TeV_powheg-pythia8": [
+            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/TWminus_DR_AtLeastOneLepton_CP5_13p6TeV_powheg-pythia8/*.root"
+        ],
+
+    },
+    "dataset_for_systematics": {
+        "TTTo2L2Nu_Hdamp-150p7_CP5_13p6TeV_powheg-pythia8": [
+            "TTTo2L2Nu_CP5_13p6TeV_powheg-pythia8",
+            "hdamp_down"
+        ],
+        "TTTo2L2Nu_Hdamp-397p6_CP5_13p6TeV_powheg-pythia8": [
+            "TTTo2L2Nu_CP5_13p6TeV_powheg-pythia8",
+            "hdamp_up"
+        ]
+    },
+    "datasets_to_group": {},
+
+    ##################################################
+    # trigger
+    ##################################################    
+
+    "dataset_trigger_map": {
+        "MuonEG": [
+            "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ",
+            "HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL"
+        ],
+        "DoubleMuon": [
+            "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8"
+        ],
+        "EGamma": [
+            "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL",
+            "HLT_DoubleEle25_CaloIdL_MW"
+        ],
+        "Muon": [
+            "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8"
+        ]
+    },
+    "dataset_trigger_order": {
+        "other":
+        [
+            "MuonEG",
+            "DoubleMuon",
+            "EGamma"
+        ],
+        "2022C2":
+        [
+            "MuonEG",
+            "Muon",
+            "EGamma"
+        ]
+    },
+    "channel_trigger_map": {
+        "ee": [
+            "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL",
+            "HLT_DoubleEle25_CaloIdL_MW"
+        ],
+        "emu": [
+            "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ",
+            "HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL",
+        ],
+        "mumu": [
+            "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8"
+        ]
+    },
+
+    "trigger_sfs_tnp": "$DATADIR/trigger/triggersf_effs_extrunc_021222.root",
+
+    ##################################################
+    # leptons
+    ################################################## 
+
+    "ele_eta_min": -2.4,
+    "ele_eta_max": 2.4,
+    "good_ele_id": "cut:tight",
+    "good_ele_pt_min": 20.0,
+    "additional_ele_id": "cut:tight",
+    "additional_ele_pt_min": 10.0,
+    "ele_cut_transreg": true,
+
+    "fake_ele_id": "skip",
+    "fake_ele_pt_min": 20.0,
+
+    "muon_cut_transreg": false,
+    "muon_eta_min": -2.4,
+    "muon_eta_max": 2.4,
+    "good_muon_id": "cut:tight",
+    "good_muon_iso": "cut:tight",
+    "good_muon_pt_min": 20.0,
+    "additional_muon_id": "cut:tight",
+    "additional_muon_iso": "cut:tight",
+    "additional_muon_pt_min": 10.0,
+
+    "fake_muon_id": "cut:tight",
+    "fake_muon_iso": "skip",
+    "fake_muon_pt_min": 20.0,
+
+    "mll_min": 20.0,
+    "lep_pt_min": [
+        35,
+        35
+    ],
+    "lep_pt_num_satisfied": 2,
+    "z_boson_window_start": 76,
+    "z_boson_window_end": 106,
+
+    "electron_sf": [
+        [
+            "$DATADIR/leptons/oviedo_effs_ele_041122.root",
+            "EGamma_SF2D",
+            ["abseta", "pt"]
+        ]
+    ],
+    "muon_sf": [
+        [
+            "$DATADIR/leptons/oviedo_effs_muon_reco_041122.root",
+            "EGamma_SF2D",
+            ["abseta", "pt"]
+        ],
+        [
+            "$DATADIR/leptons/oviedo_effs_muon_id_041122.root",
+            "EGamma_SF2D",
+            ["abseta", "pt"]
+        ]
+    ],
+
+    ##################################################
+    # jets / MET
+    ##################################################
+
+    "good_jet_id": "cut:tight",
+    "good_jet_puId": "skip",
+    "good_jet_lepton_distance": 0.4,
+    "good_jet_eta_min": -2.4,
+    "good_jet_eta_max": 2.4,
+    "good_jet_pt_min": 30,
+
+    "num_jets_atleast": 1,
+    "jet_pt_min": [
+        30,
+        30
+    ],
+    "jet_pt_num_satisfied": 0,
+
+    "apply_met_filters": true,
+    "ee/mm_min_met": 0,
+
+    "reapply_jec": true,
+    "undo_jec": false,
+    "smear_met": false,
+    "do_unc_met": false,
+
+    "jet_correction_data": [
+        "$DATADIR/jets/Winter22Run3_RunC_V1_DATA_L1FastJet_AK4PFPuppi.txt",
+        "$DATADIR/jets/Winter22Run3_RunC_V1_DATA_L2Relative_AK4PFPuppi.txt",
+        "$DATADIR/jets/Winter22Run3_RunC_V1_DATA_L3Absolute_AK4PFPuppi.txt",
+        "$DATADIR/jets/Winter22Run3_RunC_V1_DATA_L2L3Residual_AK4PFPuppi.txt"
+    ],
+    "jet_correction_mc": [
+        "$DATADIR/jets/Winter22Run3_V1_MC_L1FastJet_AK4PFPuppi.txt",
+        "$DATADIR/jets/Winter22Run3_V1_MC_L2Relative_AK4PFPuppi.txt",
+        "$DATADIR/jets/Winter22Run3_V1_MC_L3Absolute_AK4PFPuppi.txt",
+        "$DATADIR/jets/Winter22Run3_V1_MC_L2L3Residual_AK4PFPuppi.txt"
+    ],
+
+    "jet_uncertainty": "$DATADIR/jets/Winter22Run3_V1_MC_UncertaintySources_AK4PFPuppi.txt",
+    "junc_sources_to_use": ["Total"],
+    "jet_resolution": "$DATADIR/jets/Winter22Run3_V1_MC_PtResolution_AK4PFPuppi.txt",
+    "jet_ressf": "$DATADIR/jets/Winter22Run3_V1_MC_SF_AK4PFPuppi.txt",
+ 
+
+    ##################################################
+    # btag 
+    ##################################################
+
+    "btag": "deepjet:medium",
+    "btag_method": "fixedwp",
+    "btag_measure_type": "mujets",
+    "num_atleast_btagged": 1,
+
+    "btag_sf": [
+        [
+            "$DATADIR/btag/btagging.json",
+            "$DATADIR/btag/btag_efficiencies.root"
+        ]
+    ],
+
+    ##################################################
+    # other uncs, options
+    ##################################################
+
+    "split_pdf_uncs": true,
+    "normalize_pdf_uncs": true,
+    "pdf_types": {
+        "91400": "Hessian",
+        "306000": "Hessian",
+        "325300": "Hessian",
+        "325500": "Hessian",
+        "320900" : "MC_Gaussian"
+    },
+
+    "top_pt_reweighting": {
+        "method": "theory",
+        "scale": 1,
+        "a": 0.103,
+        "b": -0.0118,
+        "c": -0.000134,
+        "d": 0.973,
+        "sys_only": true
+    },
+
+    ##################################################
+    # hists + output settings
+    ##################################################  
+
+    "hists": "$CONFDIR/../hist_config.hjson",
+    "histogram_format": "hist",
+
+    ##################################################
+    # plotting
+    ##################################################    
+
+    "plot_dataset_groups": [
+        {
+            "label": "$\\mathrm{t \\bar{t}}$",
+            "color": "xkcd:scarlet",
+            "datasets": [
+                "TTTo2L2Nu_CP5_13p6TeV_powheg-pythia8"
+            ]
+        },
+        {
+            "label": "Z + jets",
+            "color": "tab:blue",
+            "datasets": [
+                "DYJetsToLL_M-10to50_TuneCP5_13p6TeV-madgraphMLM-pythia8",
+                "DYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8"
+            ]
+        },
+    ]
+}

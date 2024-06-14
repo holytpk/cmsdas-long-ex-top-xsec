@@ -1,0 +1,2 @@
++JobFlavour="microcentury"
+requirements=(OpSysAndVer =?= "AlmaLinux9")

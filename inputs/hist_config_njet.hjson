@@ -1,0 +1,23 @@
+# Collection of a range of histogram configurations. Some of these are used
+# as input by some of the scripts provided by Pepper, for example for
+# evaluating b-tagging efficiencies.
+{
+    "njet": {
+        "bins": [
+            {
+                "name": "njet",
+                "label": "Number of jets",
+                "n_or_arr": 10,
+                "lo": 0,
+                "hi": 10
+            }
+        ],
+        "fill": {
+            "njet": [
+                "Jet",
+                {"function": "num"}
+            ]
+        },
+        "step_requirement": "cut:Has btag(s)"
+    }
+}

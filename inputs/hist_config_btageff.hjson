@@ -1,0 +1,70 @@
+# Collection of a range of histogram configurations. Some of these are used
+# as input by some of the scripts provided by Pepper, for example for
+# evaluating b-tagging efficiencies.
+{
+    "btageff": {
+        # Used in the production of btagging SFs
+        "bins": [
+            {
+                "name": "flav",
+                "label": "Flavor",
+                "n_or_arr": [0, 4, 5, 6]
+            },
+            {
+                "name": "pt",
+                "label": "$p_{\\mathrm{T}}$",
+                "n_or_arr": [30,  50,  70,  100, 150, 210, 990],
+                "unit": "GeV"
+            },
+            {
+                "name": "abseta",
+                "label": "$\\left|\\eta\\right|$",
+                "n_or_arr": [0, 0.75, 1.5, 2.25, 3]
+            },
+            {
+                "name": "njet",
+                 "label": "Number of jets",
+                 "n_or_arr": 10,
+                 "lo": 0,
+                 "hi": 10
+             }
+        ],
+        "cats": [
+            {
+                "name": "btagged",
+                "label": "Is b-tagged"
+            }
+        ],
+        "fill": {
+            "flav": [
+                "Jet",
+                "hadronFlavour"
+            ],
+            "pt": [
+                "Jet",
+                "pt"
+            ],
+            "abseta": [
+                "Jet",
+                "eta",
+                {"function": "abs"}
+            ],
+            "njet": [
+                "Jet",
+                {"function": "num"}
+            ],
+            "btagged": {
+                "yes": [
+                    "Jet",
+                    "btagged"
+                ],
+                "no": [
+                    "Jet",
+                    "btagged",
+                    {"function": "not"}
+                ]
+            }
+        },
+        "step_requirement": "cut:Has jet(s)"
+    }
+}

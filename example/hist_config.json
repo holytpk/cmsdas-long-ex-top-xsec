@@ -1,0 +1,326 @@
+# Collection of a range of histogram configurations. Some of these are used
+# as input by some of the scripts provided by Pepper, for example for
+# evaluating b-tagging efficiencies.
+{
+    "1st_lep_pt": {
+        "bins": [
+            {
+                "name": "pt",
+                "label": "Lepton $p_{\\mathrm{T}}$",
+                "n_or_arr": 100,
+                "lo": 0,
+                "hi": 400,
+                "unit": "GeV"
+            }
+        ],
+        "fill": {
+            "pt": [
+                "Lepton",
+                "pt",
+                {"leading": 1}
+            ]
+        }
+    },
+    "2nd_jet_eta": {
+        "bins": [
+            {
+                "name": "eta",
+                "label": "Jet $\\eta$",
+                "n_or_arr": 52,
+                "lo": -2.6,
+                "hi": 2.6
+            }
+        ],
+        "fill": {
+            "eta": [
+                "Jet",
+                "eta",
+                {"leading": 2}
+            ]
+        }
+    },
+    "njet": {
+        "bins": [
+            {
+                "name": "njet",
+                "label": "Number of jets",
+                "n_or_arr": 9,
+                "lo": 0,
+                "hi": 9
+            }
+        ],
+        "fill": {
+            "njet": [
+                "Jet",
+                {"function": "num"}
+            ]
+        }
+    },
+    "mll": {
+        "bins": [
+            {
+                "name": "mll",
+                "label": "$m_{\\mathrm{ll}}$",
+                "n_or_arr": 100,
+                "lo": 0,
+                "hi": 400,
+                "unit": "GeV"
+            }
+        ],
+        "fill": {
+            "mll": [
+                "mll"
+            ]
+        }
+    },
+    "METpt": {
+        "bins": [
+            {
+                "name": "pt",
+                "label": "MET $p_{\\mathrm{T}}$",
+                "n_or_arr": 40,
+                "lo": 0,
+                "hi": 200,
+                "unit": "GeV"
+            }
+        ],
+        "fill": {
+            "pt": [
+                "MET",
+                "pt"
+            ]
+        }
+    },
+    "METphi": {
+        "bins": [
+            {
+                "name": "phi",
+                "label": "MET $\\phi$",
+                "n_or_arr": 40,
+                "lo": -3.14,
+                "hi": 3.14
+            }
+        ],
+        "fill": {
+            "phi": [
+                "MET",
+                "phi"
+            ]
+        }
+    },
+    "deltaphi": {
+        "bins": [
+            {
+                "name": "deltaphi",
+                "label": "Leading leptons $|\\Delta \\varphi|$",
+                "n_or_arr": 33,
+                "lo": 0,
+                "hi": 3.3
+            }
+        ],
+        "fill": {
+            "deltaphi": [
+                "Lepton",
+                "phi",
+                {"function": "leaddiff"},
+                {"function": "abs"}
+            ]
+        }
+    },
+    "btageff": {
+        # Used in the production of btagging SFs
+        "bins": [
+            {
+                "name": "flav",
+                "label": "Flavor",
+                "n_or_arr": [0, 4, 5, 6]
+            },
+            {
+                "name": "pt",
+                "label": "$p_{\\mathrm{T}}$",
+                "n_or_arr": [20,  40,  60,  90, 150, 210, 990],
+                "unit": "GeV"
+            },
+            {
+                "name": "abseta",
+                "label": "$\\left|\\eta\\right|$",
+                "n_or_arr": [0, 0.75, 1.5, 2.25, 3]
+            }
+        ],
+        "cats": [
+            {
+                "name": "btagged",
+                "label": "Is b-tagged"
+            }
+        ],
+        "fill": {
+            "flav": [
+                "Jet",
+                "hadronFlavour"
+            ],
+            "pt": [
+                "Jet",
+                "pt"
+            ],
+            "abseta": [
+                "Jet",
+                "eta",
+                {"function": "abs"}
+            ],
+            "btagged": {
+                "yes": [
+                    "Jet",
+                    "btagged"
+                ],
+                "no": [
+                    "Jet",
+                    "btagged",
+                    {"function": "not"}
+                ]
+            }
+        }
+    },
+    "jet_pu_id_eff": {
+        # Used in the production of jet PU ID SFs
+        "bins": [
+            {
+                "name": "pt",
+                "label": "$p_{\\mathrm{T}}$",
+                "n_or_arr": [20, 25, 30, 40, 50],
+                "unit": "GeV"
+            },
+            {
+                "name": "eta",
+                "label": "$\\eta$",
+                "n_or_arr": [-5, -3, -2.75, -2.5, -1.479, 0, 1.479, 2.5, 2.75, 3, 5]
+            }
+        ],
+        "cats": [
+            {
+                "name": "has_gen_jet",
+                "label": "Has gen jet"
+            },
+            {
+                "name": "pass_pu_id",
+                "label": "passing PU id"
+            }
+        ],
+        "fill": {
+            "pt": [
+                "Jet",
+                "pt"
+            ],
+            "eta": [
+                "Jet",
+                "eta"
+            ],
+            "pass_pu_id": {
+                "yes": [
+                    "Jet",
+                    "pass_pu_id"
+                ],
+                "no": [
+                    "Jet",
+                    "pass_pu_id",
+                    {"function": "not"}
+                ]
+            },
+            "has_gen_jet": {
+                "yes": [
+                    "Jet",
+                    "has_gen_jet"
+                ],
+                "no": [
+                    "Jet",
+                    "has_gen_jet",
+                    {"function": "not"}
+                ]
+            }
+        }
+    },
+    "trigger_sf_constructor": {
+        # Used by produce_triggerSF_numbers.py
+        "bins": [
+            {
+                "name": "1st lep pt",
+                "label": "1st lep $p_{\\mathrm{T}}$",
+                "n_or_arr": [25, 40, 60, 85, 120, 180, 1000],
+                "unit": "GeV"
+            },
+            {
+                "name": "2nd lep pt",
+                "label": "2nd lep $p_{\\mathrm{T}}$",
+                "n_or_arr": [20, 40, 60, 85, 120, 1000],
+                "unit": "GeV"
+            },
+            # Bins for computing systematic variations:
+            {
+                "name": "njet",
+                "label": "njet",
+                "n_or_arr": [0, 3, 10]
+            },
+            {
+                "name": "nPV",
+                "label": "nPV",
+                "n_or_arr": [0, 30, 200]
+            },
+            {
+                "name": "MET",
+                "label": "MET",
+                "n_or_arr": [0, 150, 2000]
+            }
+        ],
+        "cats": [
+            {
+                "name": "MET triggers",
+                "label": "MET triggers"
+            },
+            {
+                "name": "dilep triggers",
+                "label": "dilep triggers"
+            }
+        ],
+        "fill": {
+            "1st lep pt": [
+                "Lepton",
+                "pt",
+                {"leading": 1}
+            ],
+            "2nd lep pt": [
+                "Lepton",
+                "pt",
+                {"leading": 2}
+            ],
+            "njet": [
+                "Jet",
+                {"function": "num"}
+            ],
+            "nPV": [
+                "PV",
+                "npvs"
+            ],
+            "MET": [
+                "MET",
+                "pt"
+            ],
+            "MET triggers": {
+                "yes": [
+                    "MET triggers"
+                ],
+                "no": [
+                    "MET triggers",
+                    {"function": "not"}
+                ]
+            },
+            "dilep triggers": {
+                "yes": [
+                    "dilep triggers"
+                ],
+                "no": [
+                    "dilep triggers",
+                    {"function": "not"}
+                ]
+            }
+        }
+    }
+}

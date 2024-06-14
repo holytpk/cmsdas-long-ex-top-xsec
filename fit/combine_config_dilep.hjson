@@ -1,0 +1,94 @@
+{
+    ##################################################
+    # Process definitions
+    ##################################################
+
+    "bg_procs": {
+        "DY": [
+            "DYJetsToLL_M-10to50_TuneCP5_13p6TeV-madgraphMLM-pythia8",
+            "DYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8"
+        ],
+        "TW": [
+            "TbarWplus_DR_AtLeastOneLepton_CP5_13p6TeV_powheg-pythia8",
+            "TWminus_DR_AtLeastOneLepton_CP5_13p6TeV_powheg-pythia8"
+        ]
+    },
+    "signal_procs": {
+        "tt": [
+            "TTTo2L2Nu_CP5_13p6TeV_powheg-pythia8"
+        ]
+    },
+    "data": ["MuonEG", "DoubleMuon", "EGamma", "Muon"],
+    
+    ##################################################
+    # Category definitions
+    ##################################################
+
+    "categories": {
+        "ee_btag1": {"channel": "is_ee", "btags": "b1"},
+        "ee_btag2": {"channel": "is_ee", "btags": "b2+"},
+        "mm_btag1": {"channel": "is_mm", "btags": "b1"},
+        "mm_btag2": {"channel": "is_mm", "btags": "b2+"},
+        "em_btag1": {"channel": "is_em", "btags": "b1"},
+        "em_btag2": {"channel": "is_em", "btags": "b2+"}
+    },
+
+    "rebin": {
+        "ee_btag1": [1,2,3,4,10],
+        "ee_btag2": [2,3,4,10],
+        "mm_btag1": [1,2,3,4,10],
+        "mm_btag2": [2,3,4,10],
+        "em_btag0": [1,2,3,10],
+        "em_btag1": [1,2,3,4,10],
+        "em_btag2": [2,3,4,10]
+    }
+
+    ##################################################
+    # Systematic uncertainties
+    ##################################################
+
+    # Shape uncertainties
+    "systematics": {
+        # Theory uncertainties
+        "MEfac_tt":         {"hist": "MEfac", "procs": ["tt"]},
+        "MEfac_TW":         {"hist": "MEfac", "procs": ["TW"]},
+        "MEren_tt":         {"hist": "MEren", "procs": ["tt"]},
+        "MEren_DY":         {"hist": "MEren", "procs": ["DY"]},
+        "MEren_TW":         {"hist": "MEren", "procs": ["TW"]},
+        "PDF":              {"hist": "PDF", "type": "envelope"},
+        "PDFalphas":        {"hist": "PDFalphas"},
+        "hdamp":            {"hist": "hdamp", "procs": ["tt"]},
+        "toppt":            {"hist": "TopPtReweighting", "procs": ["tt"], "type":"single", "index": 0, "onesided": true},
+
+        # Experimental uncertainties
+        "triggersf_ele":    {"hist": "triggersfEleData"},
+        "triggersf_mu":     {"hist": "triggersfMuData"},
+        "electron_id_sf":   {"hist": "electron_id_sf"},
+        "btagsf":           {"hist": "btagsf0"},
+        "btagsf_light":     {"hist": "btagsf0light"},
+        "JES":              {"hist": "JuncTotal"},      
+    },
+
+    # Normalization (log-normal) uncertainties
+    "lnN_uncs": {
+        "lumi":             {"unc": 0.021},
+        "DrellYanXS":       {"unc": 0.2, "procs": ["DY"]},
+        "tWXS":             {"unc": 0.15, "procs": ["TW"]}
+    },
+
+    ##################################################
+    # Plotting options
+    ##################################################
+
+    "ax_label": "Number of jets",
+    "colors": {
+        "tt": "xkcd:scarlet",
+        "TW": "tab:pink",
+        "DY": "tab:blue"
+    },
+    "display_names": {
+        "tt": "$t \\bar{t}$",
+        "TW": "tW",
+        "DY": "Drell-Yan"
+    },
+}

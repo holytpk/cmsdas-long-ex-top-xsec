@@ -1,0 +1,23 @@
+
+# units are fb
+# useful links for cross section values:
+# https://twiki.cern.ch/twiki/bin/viewauth/CMS/StandardModelCrossSectionsat13TeV
+# https://twiki.cern.ch/twiki/bin/view/LHCPhysics/TtbarNNLO
+# https://twiki.cern.ch/twiki/bin/view/LHCPhysics/SingleTopRefXsec
+# https://twiki.cern.ch/twiki/bin/viewauth/CMS/SummaryTable1G25ns
+# https://xsdb-temp.app.cern.ch/
+{
+    "TTTo2L2Nu_CP5_13p6TeV_powheg-pythia8": 100000,
+    "TBbarQ_t-channel_4FS_CP5_13p6TeV_powheg-madspin-pythia8": 145000,
+    "TbarBQ_t-channel_4FS_CP5_13p6TeV_powheg-madspin-pythia8": 87200,
+    "DYJetsToLL_M-10to50_TuneCP5_13p6TeV-madgraphMLM-pythia8": 19317500,
+    "DYJetsToLL_M-50_TuneCP5_13p6TeV-madgraphMLM-pythia8": 6221300,
+    "WJetsToLNu_TuneCP5_13p6TeV-madgraphMLM-pythia8": 63199900,
+    "WtoLNu_NoTau_CP5_13p6TeV_amcatnloFXFX-pythia8": 42133267,
+    "WW_TuneCP5_13p6TeV-pythia8": 116800,
+    "WZ_TuneCP5_13p6TeV-pythia8": 54280,
+    "ZZ_TuneCP5_13p6TeV-pythia8": 16680,
+    "DYtoLL_NoTau_CP5_13p6TeV_amcatnloFXFX-pythia8": 4147533.3
+}
+
+
