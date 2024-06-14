@@ -8,8 +8,6 @@ Installation guidelines are part of the "pre-exercise" section.
 
 Most of the standard pepper README is repeated below, which is useful in understanding the general functionality of the framework. 
 
-## Usage -->
-
 ### Getting started
 
 In Pepper an analysis is implemented as a Processor class. A short example of such a Processor with many explanatory comments can be found in [here](example/example_processor.py). This processor can be run by executing `python3 -m pepper.runproc example_processor.py example_config.json` (when inside the example directory). Also running `python -m pepper.runproc -h` will show the available command line options.
