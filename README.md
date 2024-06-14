@@ -1,27 +1,12 @@
-# Pepper 
+# CMSDAS CERN 2024 instructions
 
-The standard pepper README is repeated here. For installation instructions and instructions specific to the CMSDAS exercise, please see the docs.cern.ch website [here](https://cmsdas-2024-ttxs.docs.cern.ch/)
+Please follow the instructions here if you are part of this school: [cmsdas-2024-ttxs.docs.cern.ch](https://cmsdas-2024-ttxs.docs.cern.ch/)
 
-<!-- A python framework for analyzing NanoAODs. Easy to use and highly configurable.
+Installation guidelines are part of the "pre-exercise" section.
 
-The framework is designed to allow analysis of any type of event topology. For reference this repository comes with the necessary tools for a <img src="https://latex.codecogs.com/gif.latex?\mathrm{t\bar{t}}\rightarrow\mathrm{b\bar{b}}\mathrm{ll\nu\nu}" /> analysis.
+## Pepper
 
-
-
-## Installation
-It is recommended to use a proper environment with Pepper. An example environment setup for DESY NAF can be found [here](example/environment.sh), which can be sourced after cloning the repository.
-Pepper can be installed as a python package as follows:
-```sh
-git clone <repository url> pepper
-cd pepper
-source example/environment.sh
-python3 -m pip install --upgrade --upgrade-strategy eager --editable .
-# Additionally only if on CentOS7 (e.g. DESY NAF in 2023):
-python3 -m pip install "urllib3<2"
-```
-This will update all dependencies to the latest version. Now `pepper` can be imported as any other python package from any location. Because of the `--editable` option, if you edit files inside your cloned pepper directory, the changes will be in effect already the next time you `import pepper`.
-
-__Note__: If you are on CentOS7, please run `python3 -m pip install "urllib3<2"`, as written above. CentOS7 is lacking a recent OpenSSL version, thus an older urllib3 version is required.
+Most of the standard pepper README is repeated below, which is useful in understanding the general functionality of the framework. 
 
 ## Usage -->
 
