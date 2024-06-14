@@ -72,13 +72,6 @@
         "TTTo2L2Nu_Hdamp-397p6_CP5_13p6TeV_powheg-pythia8": [
             "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/TTTo2L2Nu_Hdamp-397p6_CP5_13p6TeV_powheg-pythia8/*.root"
         ],
-        "TbarWplus_DR_AtLeastOneLepton_CP5_13p6TeV_powheg-pythia8": [
-            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/TbarWplus_DR_AtLeastOneLepton_CP5_13p6TeV_powheg-pythia8/*.root"
-        ],
-        "TWminus_DR_AtLeastOneLepton_CP5_13p6TeV_powheg-pythia8": [
-            "/eos/user/c/cmsdas/2024/long-ex-top-xsec/nanoAOD/TWminus_DR_AtLeastOneLepton_CP5_13p6TeV_powheg-pythia8/*.root"
-        ],
-
     },
     "dataset_for_systematics": {
         "TTTo2L2Nu_Hdamp-150p7_CP5_13p6TeV_powheg-pythia8": [
